@@ -1,0 +1,64 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Conta;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+double depositValue;
+		double balance;
+		System.out.println("Entre com o nome do cliente: ");
+String name = sc.nextLine();
+
+		System.out.println("Entre com o número da conta: ");
+int accountNumber = sc.nextInt();
+
+Conta conta = new Conta();
+Conta.setAccountHolder(name);
+Conta.setAccountNumber(accountNumber);
+
+//System.out.println(Conta.getAccountHolder());
+//System.out.println(Conta.getAccountNumber());
+		System.out.println("Deseja fazer um depósito inicial?");
+
+		char response = sc.next().charAt(0);
+		
+if (response == 'y') {
+	
+		System.out.println("Entre o valor do depósito inicial: ");
+		depositValue = sc.nextDouble();
+		conta.setDepositValue(depositValue);
+		balance = depositValue;
+		conta.setBalance(balance);
+}
+
+else {
+	balance = 0;
+	conta.setBalance(balance);
+}
+		
+System.out.println("Acount data: ");
+System.out.println("Conta: " + Conta.getAccountNumber() + " Nome: " + Conta.getAccountHolder() + " Saldo: "+ conta.getBalance());
+
+
+System.out.println("Enter a deposit value ");
+depositValue = sc.nextDouble();
+conta.setDepositValue(depositValue);
+double deposito = conta.Deposito(balance, depositValue);
+System.out.println(deposito);
+
+System.out.println("Updated account data: ");
+System.out.println("Conta: " + Conta.getAccountNumber() + " Nome: " + Conta.getAccountHolder() + " Saldo: "+ deposito);
+
+
+
+
+		sc.close();
+	}
+}
