@@ -30,10 +30,10 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\56641\eclipse-workspace\enum1-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\inheritance3-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\inheritance2-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\AulaTestGitHub"/>
-			<item value="C:\Users\56641\eclipse-workspace\enum1-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\aula1_git-hub"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
