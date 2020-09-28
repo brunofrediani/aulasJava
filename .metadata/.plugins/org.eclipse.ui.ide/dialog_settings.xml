@@ -31,6 +31,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\56641\eclipse-workspace\exceptions1-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\inheritance6-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\inheritance4-java"/>
 			<item value="C:\Users\56641\eclipse-workspace\enum1-java"/>
