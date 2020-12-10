@@ -13,6 +13,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\56641\eclipse-workspace\interfaces1-java"/>
 			<item value="C:\Users\56641\Desktop\chess-system-java-e20c7b15a02a911d13624a796f21b5184f133f58"/>
 			<item value="C:\Users\56641\Desktop\KAIOS"/>
 			<item value="C:\Users\56641\eclipse-workspace\inheritance3-java"/>
