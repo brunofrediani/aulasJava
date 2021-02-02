@@ -2,12 +2,11 @@ package Application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
 
 import db.DB;
 
@@ -15,60 +14,53 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		
-		
-		/*
-		 * DOUBLE SALARY SÓ ACEITA COM VIRGULA AO INVÉS DE PONTO 
-		 */
-		
-		
-		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Locale.setDefault(Locale.US);
-
 		Connection conn = null;
 		PreparedStatement st = null;
-
 		try {
-			System.out.print("Insira o nome: ");
-			String name = sc.nextLine();
-			System.out.print("Insira o email: ");
-			String email = sc.nextLine();
-			System.out.print("Insira o data de nascimento: ");
-			Date birthDate = sdf.parse(sc.next());
-			System.out.print("Insira o salário base: ");
-			Double baseSalary = sc.nextDouble();
-			System.out.print("Insira o nº do departamento: ");
-			Integer departmentID = sc.nextInt();
-
 			conn = DB.getConnection();
-				st = conn.prepareStatement(
-				"INSERT INTO seller " 
-				+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
-				+ "VALUES " 
-				+ "(?, ?, ? , ?, ?)");
-	
-					st.setString(1, name);
-					st.setString(2, email);
-					st.setDate(3, new java.sql.Date((birthDate).getTime()));
-					st.setDouble(4, baseSalary);
-					st.setInt(5, departmentID);
+
+			// EXAMPLE 1:
+			st = conn.prepareStatement(
+					"INSERT INTO seller "
+					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
+					+ "VALUES "
+					+ "(?, ?, ?, ?, ?)", 
+					Statement.RETURN_GENERATED_KEYS);
+
+			st.setString(1, "Carl Purple");
+			st.setString(2, "carl@gmail.com");
+			st.setDate(3, new java.sql.Date(sdf.parse("22/04/1985").getTime()));
+			st.setDouble(4, 3000.0);
+			st.setInt(5, 4);
+
+			// EXAMPLE 2:
+			//st = conn.prepareStatement(
+			//		"insert into department (Name) values ('D1'),('D2')", 
+			//		Statement.RETURN_GENERATED_KEYS);
 
 			int rowsAffected = st.executeUpdate();
-			System.out.println("Done! Rows Affected: " + rowsAffected);
-
-		} catch (SQLException e) {
+			
+			if (rowsAffected > 0) {
+				ResultSet rs = st.getGeneratedKeys();
+				while (rs.next()) {
+					int id = rs.getInt(1);
+					System.out.println("Done! Id: " + id);
+				}
+			}
+			else {
+				System.out.println("No rows affected!");
+			}
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
-
-		} catch (ParseException e) {
+		} 
+		catch (ParseException e) {
 			e.printStackTrace();
 		}
-
 		finally {
-
 			DB.closeStatement(st);
 			DB.closeConnection();
 		}
 	}
-
 }
